@@ -1,5 +1,7 @@
 package com.picasso.crm.api.tour;
 
+import com.picasso.crm.api.driver.DriverEntity;
+import com.picasso.crm.api.guide.GuideEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,4 +35,8 @@ public class TourEntity {
     Duration duration;
     String name;
     String description;
+    @ManyToMany
+    List<GuideEntity> guides;
+    @ManyToMany
+    List<DriverEntity> drivers;
 }

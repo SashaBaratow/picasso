@@ -1,14 +1,18 @@
 package com.picasso.crm.api.tour;
 
+import com.picasso.crm.api.guide.GuideEntity;
+import com.picasso.crm.api.guide.GuideRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class TourServiceImpl implements TourService {
     private final TourRepository tourRepository;
+    private final GuideRepository guideRepository;
     private final TourToEntityConvertor toEntityConvertor;
     private final TourEntityToDTOConvertor toDTOConvertor;
 
@@ -51,5 +55,16 @@ public class TourServiceImpl implements TourService {
         TourEntity updatedTourEntity = tourRepository.save(existingTour);
 
         return toDTOConvertor.convert(updatedTourEntity);
+    }
+
+    public void addGuide(List<Long> guideIds, Long tourId) {
+        TourEntity tourEntity = tourRepository.findById(tourId).orElseThrow(() -> new IllegalArgumentException("Tour with" + tourId + "not exist"));
+        List<GuideEntity> guides = guideRepository.findAllById(guideIds);
+        tourEntity.setGuides(guides);
+        for (GuideEntity guide : guides) {
+            guide.add(tourEntity);
+        }
+        TourEntity savedTour = tourRepository.save(tourEntity);
+        guideRepository.saveAll(guides);
     }
 }

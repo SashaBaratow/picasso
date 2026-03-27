@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,4 +21,5 @@ public class Tour {
     Duration duration;
     String name;
     String description;
+    List<Integer> guideIds;
 }
