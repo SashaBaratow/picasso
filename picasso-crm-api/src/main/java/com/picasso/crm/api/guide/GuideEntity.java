@@ -1,15 +1,11 @@
 package com.picasso.crm.api.guide;
 
-import com.picasso.crm.api.tour.TourEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -30,14 +26,4 @@ public class GuideEntity {
     String name;
     String phone;
     String languages;
-    @ManyToMany(mappedBy = "guides")
-    List<TourEntity> tours;
-
-    public GuideEntity add(TourEntity tourEntity) {
-        if (tours == null) {
-            tours = new ArrayList<>();
-        }
-        tours.add(tourEntity);
-        return this;
-    }
 }
