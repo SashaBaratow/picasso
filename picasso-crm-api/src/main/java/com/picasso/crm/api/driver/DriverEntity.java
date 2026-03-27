@@ -29,7 +29,4 @@ public class DriverEntity {
     String name;
     String phone;
     String carModel;
-    @ManyToMany(mappedBy = "drivers")
-    List<TourEntity> tours;
-
 }

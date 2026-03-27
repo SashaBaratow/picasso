@@ -35,8 +35,4 @@ public class TourEntity {
     Duration duration;
     String name;
     String description;
-    @ManyToMany
-    List<GuideEntity> guides;
-    @ManyToMany
-    List<DriverEntity> drivers;
 }
