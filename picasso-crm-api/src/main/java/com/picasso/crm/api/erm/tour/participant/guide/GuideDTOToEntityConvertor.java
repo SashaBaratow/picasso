@@ -1,4 +1,4 @@
-package com.picasso.crm.api.guide;
+package com.picasso.crm.api.erm.tour.participant.guide;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

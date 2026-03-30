@@ -1,4 +1,4 @@
-package com.picasso.crm.api.guide;
+package com.picasso.crm.api.erm.tour.participant.guide;
 
 import lombok.AccessLevel;
 import lombok.Getter;

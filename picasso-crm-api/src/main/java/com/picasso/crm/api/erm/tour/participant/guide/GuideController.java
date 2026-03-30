@@ -1,10 +1,7 @@
-package com.picasso.crm.api.guide;
+package com.picasso.crm.api.erm.tour.participant.guide;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/guides")
@@ -16,6 +13,11 @@ public class GuideController {
     @PostMapping
     public Guide save(@RequestBody Guide guide) {
         return guideService.save(guide);
+    }
+
+    @GetMapping("/{id}")
+    public Guide findById(@PathVariable Long id) {
+        return guideService.findById(id).orElse(null);
     }
 
 }

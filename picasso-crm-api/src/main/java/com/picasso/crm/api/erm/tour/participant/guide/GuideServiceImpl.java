@@ -1,7 +1,9 @@
-package com.picasso.crm.api.guide;
+package com.picasso.crm.api.erm.tour.participant.guide;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,4 +18,11 @@ public class GuideServiceImpl implements GuideService {
         GuideEntity savedGuideEntity = guideRepository.save(guideEntity);
         return  toDTOConvertor.convert(savedGuideEntity);
     }
+
+    @Override
+    public Optional<Guide> findById(Long id) {
+        Optional<GuideEntity> guide = guideRepository.findById(id);
+        return guide.map(toDTOConvertor :: convert);
+    }
+
 }

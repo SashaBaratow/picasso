@@ -1,5 +1,6 @@
-package com.picasso.crm.api.guide;
+package com.picasso.crm.api.erm.tour.participant.guide;
 
+import com.picasso.crm.api.erm.tour.participant.TourParticipantEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,12 +19,8 @@ import lombok.experimental.FieldDefaults;
                 @Index(columnList = "phone")
         }
 )
-public class GuideEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GUIDES_ID_GENERATOR")
-    @SequenceGenerator(name = "GUIDES_ID_GENERATOR", sequenceName = "GUIDES_SEQ", allocationSize = 1)
-    Long id;
+public class GuideEntity extends TourParticipantEntity {
+
     String name;
-    String phone;
     String languages;
 }
