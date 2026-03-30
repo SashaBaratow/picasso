@@ -1,4 +1,4 @@
-package com.picasso.crm.api.driver;
+package com.picasso.crm.api.erm.tour.participant.driver;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -32,5 +32,4 @@ public class GuideServiceImpl implements GuideService {
         }
         guideRepository.deleteById(id);
     }
-
 }

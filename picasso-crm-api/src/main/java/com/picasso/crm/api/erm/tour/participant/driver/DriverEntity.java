@@ -1,14 +1,12 @@
-package com.picasso.crm.api.driver;
+package com.picasso.crm.api.erm.tour.participant.driver;
 
-import com.picasso.crm.api.tour.TourEntity;
+import com.picasso.crm.api.erm.tour.participant.TourParticipantEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
-import java.util.List;
 
 @Entity
 @Getter
@@ -21,12 +19,8 @@ import java.util.List;
                 @Index(columnList = "phone")
         }
 )
-public class DriverEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DRIVER_ID_GENERATOR")
-    @SequenceGenerator(name = "DRIVER_ID_GENERATOR", sequenceName = "DRIVER_SEQ", allocationSize = 1)
-    Long id;
-    String name;
+public class DriverEntity extends TourParticipantEntity {
+
     String phone;
     String carModel;
 }

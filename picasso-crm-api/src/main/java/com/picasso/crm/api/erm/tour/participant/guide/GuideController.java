@@ -27,4 +27,9 @@ public class GuideController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/{id}")
+    public Guide update(@RequestBody Guide guide) {
+        return guideService.save(guide);
+    }
+
 }

@@ -1,10 +1,7 @@
-package com.picasso.crm.api.driver;
+package com.picasso.crm.api.erm.tour.participant.driver;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/drivers")
@@ -16,5 +13,10 @@ public class DriverController {
     @PostMapping
     public Driver save(@RequestBody Driver driver) {
         return driverService.save(driver);
+    }
+
+    @PostMapping("/{id}")
+    public Driver findById(@PathVariable Long id) {
+        return driverService.findById(id).orElse(null);
     }
 }
