@@ -1,6 +1,7 @@
 package com.picasso.crm.api.erm.tour.participant.guide;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,6 +19,12 @@ public class GuideController {
     @GetMapping("/{id}")
     public Guide findById(@PathVariable Long id) {
         return guideService.findById(id).orElse(null);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        guideService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

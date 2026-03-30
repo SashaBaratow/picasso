@@ -6,4 +6,6 @@ public interface GuideService {
     Guide save(Guide guide);
 
     Optional<Guide> findById(Long id);
+
+    void deleteById(Long id);
 }

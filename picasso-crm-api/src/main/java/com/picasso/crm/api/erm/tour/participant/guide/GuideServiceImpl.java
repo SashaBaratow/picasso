@@ -16,13 +16,21 @@ public class GuideServiceImpl implements GuideService {
     public Guide save(Guide guide) {
         GuideEntity guideEntity = toEntityConvertor.convert(guide);
         GuideEntity savedGuideEntity = guideRepository.save(guideEntity);
-        return  toDTOConvertor.convert(savedGuideEntity);
+        return toDTOConvertor.convert(savedGuideEntity);
     }
 
     @Override
     public Optional<Guide> findById(Long id) {
         Optional<GuideEntity> guide = guideRepository.findById(id);
-        return guide.map(toDTOConvertor :: convert);
+        return guide.map(toDTOConvertor::convert);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id can't be null");
+        }
+        guideRepository.deleteById(id);
     }
 
 }
