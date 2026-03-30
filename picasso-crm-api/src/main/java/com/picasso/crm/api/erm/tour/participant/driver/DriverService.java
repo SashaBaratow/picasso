@@ -6,4 +6,6 @@ public interface DriverService {
     Driver save(Driver driver);
 
     Optional<Driver> findById(Long id);
+
+    void deleteById(Long id);
 }

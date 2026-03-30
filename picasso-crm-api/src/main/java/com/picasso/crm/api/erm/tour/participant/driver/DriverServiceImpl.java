@@ -24,4 +24,12 @@ public class DriverServiceImpl implements DriverService{
         Optional<DriverEntity> driver = driverRepository.findById(id);
         return driver.map(toDTOConvertor :: convert);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id can't be null");
+        }
+        driverRepository.deleteById(id);
+    }
 }
